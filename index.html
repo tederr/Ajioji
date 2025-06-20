@@ -1,0 +1,253 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sim & Tush - Dosti ke Vachan 💞</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #f9d5ec, #ffd6ec);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            color: #444;
+            overflow-x: hidden;
+        }h1 {
+        font-size: 2em;
+        color: #ff4b91;
+        margin: 20px 0 10px;
+        text-align: center;
+    }
+
+    .clause-box {
+        background: #fff;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        max-width: 400px;
+        text-align: center;
+        display: none;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .clause-box.active {
+        display: block;
+    }
+
+    .next-btn {
+        background: #ff4b91;
+        color: #fff;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 30px;
+        font-size: 1em;
+        margin-top: 15px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .next-btn:hover {
+        background: #e63e7d;
+    }
+
+    .final-accept {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .final-accept input[type="checkbox"] {
+        transform: scale(1.5);
+        margin: 10px;
+    }
+
+    .final-accept button {
+        background: #ff4b91;
+        color: #fff;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 30px;
+        font-size: 1em;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background 0.3s;
+    }
+
+    .final-accept button:hover {
+        background: #e63e7d;
+    }
+
+    .final-message {
+        display: none;
+        font-size: 1.5em;
+        color: #ff4b91;
+        margin-top: 30px;
+        text-align: center;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .confetti {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+    }
+
+    footer {
+        margin-top: 30px;
+        font-size: 0.9em;
+        color: #666;
+        text-align: center;
+    }
+</style>
+
+</head>
+<body><h1>💞 Sim & Tush — Dosti ke Vachan 💞</h1>
+
+<div id="clause-container">
+    <div class="clause-box active">Clause 1 — Only Us Clause:<br><br>
+    "Hamari dosti ekdum khaas hai. Isliye Sim sirf Tush se baat karegi, Tush sirf Sim se baat karega. Naye dost banane ki zarurat nahi hogi, kyunki hamari dosti sabse best hai!"</div>
+
+    <div class="clause-box">Clause 2 — No Bf/Gf Clause:<br><br>
+    "Jab tak shaadi nahi hoti, Sim kabhi boyfriend nahi banayegi aur Tush kabhi girlfriend nahi banayega. Hamari dosti mein koi teesra nahi hoga — sirf hum dono ka bond rahega."</div>
+
+    <div class="clause-box">Clause 3 — Always Share Clause:<br><br>
+    "Sim apni har chhoti badi baat Tush se share karegi. Har khushi, har problem, sabse pehle Tush ko hi batayegi. Hamari dosti ka pehla farz — ek dusre ko kabhi anjaan na rakhen."</div>
+
+    <div class="clause-box">Clause 4 — Respect & Dignity Clause:<br><br>
+    "Sim kabhi bhi Tush ka dil nahi todegi, hamesha izzat degi. Chaahe kuch bhi ho jaye, Tush ka maan hamesha bana rahega."</div>
+
+    <div class="clause-box">Clause 5 — Priority Clause:<br><br>
+    "Sim ki life mein Tush ka sabse upar jagah hoga. Har important faisle, har nayi baat pehle Tush se poochhegi, uska suggestion lega. Tush ki baat hamesha priority pe hogi."</div>
+
+    <div class="clause-box">Clause 6 — No Boys Allowed Clause:<br><br>
+    "Sim kisi ladke ke baare mein sochegi bhi nahi. Har pyar, loyalty sirf Tush ke liye rahegi."</div>
+
+    <div class="clause-box">Clause 7 — Strongest Bond Clause:<br><br>
+    "Hamari dosti duniya ki sabse strong bond banegi. Kabhi tootegi nahi, kabhi kam nahi hogi. Hamesha saath rahenge — no matter what."</div>
+</div>
+
+<button class="next-btn" id="next-btn">Next ➜</button>
+
+<div class="final-accept" id="final-accept">
+    <label>
+        <input type="checkbox" id="accept-checkbox"> Main, Sim... pure dil se ye Vachan sweekar karti hoon! 💖
+    </label>
+    <button id="submit-btn">Lock this Forever! 🚀</button>
+</div>
+
+<div class="final-message" id="final-message">
+    🎉 Sim & Tush — Forever! 💖🎉
+</div>
+
+<canvas class="confetti" id="confetti"></canvas>
+
+<footer>Made with 💖 by Tush for Sim</footer>
+
+<script>
+    const clauses = document.querySelectorAll('.clause-box');
+    const nextBtn = document.getElementById('next-btn');
+    const finalAccept = document.getElementById('final-accept');
+    const finalMessage = document.getElementById('final-message');
+    const confetti = document.getElementById('confetti');
+    const ctx = confetti.getContext('2d');
+    confetti.width = window.innerWidth;
+    confetti.height = window.innerHeight;
+
+    let index = 0;
+
+    nextBtn.addEventListener('click', () => {
+        if (index < clauses.length - 1) {
+            clauses[index].classList.remove('active');
+            index++;
+            clauses[index].classList.add('active');
+
+            if (index === clauses.length - 1) {
+                nextBtn.style.display = 'none';
+                finalAccept.style.display = 'flex';
+            }
+        }
+    });
+
+    document.getElementById('submit-btn').addEventListener('click', () => {
+        if (document.getElementById('accept-checkbox').checked) {
+            finalAccept.style.display = 'none';
+            finalMessage.style.display = 'block';
+            launchConfetti();
+        } else {
+            alert('Please accept the Vachan first!');
+        }
+    });
+
+    function launchConfetti() {
+        const particles = 150;
+        const colors = ['#ff4b91', '#ffc107', '#4caf50', '#03a9f4', '#f44336'];
+
+        let confettis = [];
+
+        for (let i = 0; i < particles; i++) {
+            confettis.push({
+                x: Math.random() * confetti.width,
+                y: Math.random() * confetti.height - confetti.height,
+                r: Math.random() * 6 + 4,
+                d: Math.random() * particles,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                tilt: Math.random() * 10 - 10,
+                tiltAngleIncremental: (Math.random() * 0.07) + 0.05,
+                tiltAngle: 0
+            });
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, confetti.width, confetti.height);
+
+            for (let i = 0; i < confettis.length; i++) {
+                let c = confettis[i];
+                ctx.beginPath();
+                ctx.lineWidth = c.r / 2;
+                ctx.strokeStyle = c.color;
+                ctx.moveTo(c.x + c.tilt + (c.r / 4), c.y);
+                ctx.lineTo(c.x + c.tilt, c.y + c.tilt + (c.r / 4));
+                ctx.stroke();
+            }
+
+            update();
+        }
+
+        function update() {
+            for (let i = 0; i < confettis.length; i++) {
+                let c = confettis[i];
+                c.tiltAngle += c.tiltAngleIncremental;
+                c.y += (Math.cos(c.d) + 3 + c.r / 2) / 2;
+                c.x += Math.sin(c.d);
+                c.tilt = Math.sin(c.tiltAngle) * 15;
+
+                if (c.y > confetti.height) {
+                    c.y = -10;
+                    c.x = Math.random() * confetti.width;
+                }
+            }
+        }
+
+        (function animloop() {
+            requestAnimationFrame(animloop);
+            draw();
+        })();
+    }
+</script>
+
+</body>
+</html>
