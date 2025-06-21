@@ -1,17 +1,178 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> error-Dosti ke Vachan </title>
-    </head>
-<body><h1> mein abhi yhi soch rha tha agr tune accept kr liye ye clause and bol dia ki same ab tu bhi kr mere liye ..to m.to..... acha kia accept ni kiye </h1>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>For Sim 💖</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
+        .card-container {
+            width: 90%;
+            max-width: 400px;
+            height: 550px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            overflow: hidden;
+            position: relative;
+            padding: 20px;
+            box-sizing: border-box;
+        }
 
+        .screen {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            padding: 20px;
+            text-align: center;
+        }
 
-<footer>Made with 💅 
-</footer>
+        .screen.active {
+            opacity: 1;
+            z-index: 1;
+        }
 
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #ff6f61;
+        }
 
+        p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
 
+        button {
+            background: #ff6f61;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 5px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #ff3b2e;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+
+        <!-- Screen 1 -->
+        <div class="screen active">
+            <h1>Hey Sim! 👋</h1>
+            <p>Yeh chhoti si greeting tumhare liye hai 💌</p>
+            <button onclick="nextScreen()">Next ➡️</button>
+        </div>
+
+        <!-- Screen 2 -->
+        <div class="screen">
+            <h1>😊 Bas ek baat kehni thi...</h1>
+            <p>Sim, tum mere liye bahut important ho... 💖</p>
+            <button onclick="prevScreen()">⬅️ Back</button>
+            <button onclick="nextScreen()">Next ➡️</button>
+        </div>
+
+        <!-- Screen 3 -->
+        <div class="screen">
+            <h1>✨ Har waqt yaad aati ho...</h1>
+            <p>Tumhari muskurahat dekh ke din ban jaata hai 😍</p>
+            <button onclick="prevScreen()">⬅️ Back</button>
+            <button onclick="nextScreen()">Next ➡️</button>
+        </div>
+
+        <!-- Screen 4 -->
+        <div class="screen">
+            <h1>🤗 Hamesha care karunga</h1>
+            <p>Tumhare har khushi, har udaasi mein...<br/> Tumhare saath hoon hamesha 🤝</p>
+            <button onclick="prevScreen()">⬅️ Back</button>
+            <button onclick="nextScreen()">Next ➡️</button>
+        </div>
+
+        <!-- Screen 5 -->
+        <div class="screen">
+            <h1>💌 Kabhi bhi zarurat ho...</h1>
+            <p>Without any hesitation... mujhe yaad kar lena 💬<br/> I will always be there for you ❤️</p>
+            <button onclick="prevScreen()">⬅️ Back</button>
+            <button onclick="nextScreen()">Next ➡️</button>
+        </div>
+
+        <!-- Screen 6 -->
+        <div class="screen">
+            <h1>🌸 Tumse baat kar ke...</h1>
+            <p>Har din acha lagta hai... tum ek amazing dost ho 💕</p>
+            <button onclick="prevScreen()">⬅️ Back</button>
+            <button onclick="nextScreen()">Next ➡️</button>
+        </div>
+
+        <!-- Screen 7 - Sorry screen -->
+        <div class="screen">
+            <h1>🙏 Maafi chahta hoon...</h1>
+            <p>Kabhi anjaane mein chhoti moti galtiya ho jaati hain...<br/> Uske liye dil se sorry Sim 😔❤️</p>
+            <button onclick="prevScreen()">⬅️ Back</button>
+            <button onclick="nextScreen()">Next ➡️</button>
+        </div>
+
+        <!-- Screen 8 -->
+        <div class="screen">
+            <h1>🎉 Final words...</h1>
+            <p>Bas yahi kehna tha... Sim, tum bahut special ho! 🌟<br/> Dosti forever 🤞💖</p>
+            <button onclick="prevScreen()">⬅️ Back</button>
+            <button onclick="restart()">🔄 Again</button>
+        </div>
+
+    </div>
+
+    <script>
+        let currentScreen = 0;
+        const screens = document.querySelectorAll('.screen');
+
+        function showScreen(index) {
+            screens.forEach((screen, i) => {
+                screen.classList.toggle('active', i === index);
+            });
+            currentScreen = index;
+        }
+
+        function nextScreen() {
+            if (currentScreen < screens.length - 1) {
+                showScreen(currentScreen + 1);
+            }
+        }
+
+        function prevScreen() {
+            if (currentScreen > 0) {
+                showScreen(currentScreen - 1);
+            }
+        }
+
+        function restart() {
+            showScreen(0);
+        }
+    </script>
 </body>
 </html>
