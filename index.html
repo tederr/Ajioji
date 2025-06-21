@@ -9,8 +9,8 @@
             margin: 0;
             padding: 0;
             height: 100vh;
-            background: linear-gradient(to right, #ffecd2, #fcb69f);
-            font-family: 'Arial', sans-serif;
+            background: #fdf1f1;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -22,11 +22,12 @@
             height: 550px;
             background: #fff;
             border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
             overflow: hidden;
             position: relative;
             padding: 20px;
             box-sizing: border-box;
+            transition: background 0.8s ease;
         }
 
         .screen {
@@ -38,7 +39,7 @@
             justify-content: center;
             align-items: center;
             opacity: 0;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.8s ease;
             padding: 20px;
             text-align: center;
         }
@@ -51,96 +52,134 @@
         h1 {
             font-size: 2rem;
             margin-bottom: 15px;
-            color: #ff6f61;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         p {
             font-size: 1.1rem;
-            color: #555;
+            color: #fff;
             margin-bottom: 30px;
             line-height: 1.5;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
         }
 
         button {
-            background: #ff6f61;
-            color: #fff;
+            background: rgba(255, 255, 255, 0.8);
+            color: #444;
             border: none;
             padding: 12px 20px;
             border-radius: 25px;
             font-size: 1rem;
             cursor: pointer;
             margin: 5px;
-            transition: background 0.3s;
+            transition: background 0.3s, color 0.3s;
         }
 
         button:hover {
-            background: #ff3b2e;
+            background: #fff;
+            color: #ff6f61;
+        }
+
+        /* Palettes */
+        .palette-1 { background: linear-gradient(135deg, #ff9a9e, #fad0c4); }
+        .palette-2 { background: linear-gradient(135deg, #a18cd1, #fbc2eb); }
+        .palette-3 { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
+        .palette-4 { background: linear-gradient(135deg, #f6d365, #fda085); }
+        .palette-5 { background: linear-gradient(135deg, #cfd9df, #e2ebf0); }
+        .palette-6 { background: linear-gradient(135deg, #84fab0, #8fd3f4); }
+        .palette-7 { background: linear-gradient(135deg, #fccb90, #d57eeb); }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 999;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff6f61;
+            opacity: 0.7;
+            animation: fall 3s infinite ease-in;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(360deg); }
         }
     </style>
 </head>
 <body>
 
-    <div class="card-container">
+    <!-- Background Music -->
+    <audio id="bgMusic" autoplay loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Confetti container -->
+    <div class="confetti" id="confetti"></div>
+
+    <div class="card-container palette-1" id="cardContainer">
 
         <!-- Screen 1 -->
         <div class="screen active">
             <h1>Hey Sim! 👋</h1>
-            <p>Yeh chhoti si greeting tumhare liye hai 💌</p>
+            <p>Yeh chhoti si greeting sirf apke liye... 💌</p>
             <button onclick="nextScreen()">Next ➡️</button>
         </div>
 
         <!-- Screen 2 -->
         <div class="screen">
-            <h1>😊 Bas ek baat kehni thi...</h1>
-            <p>Sim, tum mere liye bahut important ho... 💖</p>
+            <h1>💖 Ap mere liye...</h1>
+            <p>Bohot important ho Sim... har din apki yaad aati hai... ✨</p>
             <button onclick="prevScreen()">⬅️ Back</button>
             <button onclick="nextScreen()">Next ➡️</button>
         </div>
 
         <!-- Screen 3 -->
         <div class="screen">
-            <h1>✨ Har waqt yaad aati ho...</h1>
-            <p>Tumhari muskurahat dekh ke din ban jaata hai 😍</p>
+            <h1>😊 Jab ap hasti ho...</h1>
+            <p>Toh lagta hai duniya ruk jaye... ❤️</p>
             <button onclick="prevScreen()">⬅️ Back</button>
             <button onclick="nextScreen()">Next ➡️</button>
         </div>
 
         <!-- Screen 4 -->
         <div class="screen">
-            <h1>🤗 Hamesha care karunga</h1>
-            <p>Tumhare har khushi, har udaasi mein...<br/> Tumhare saath hoon hamesha 🤝</p>
+            <h1>🤗 Main hamesha care karunga</h1>
+            <p>Kabhi udaasi aaye toh mujhe yaad kar lena... har waqt apke saath hoon 🤝</p>
             <button onclick="prevScreen()">⬅️ Back</button>
             <button onclick="nextScreen()">Next ➡️</button>
         </div>
 
         <!-- Screen 5 -->
         <div class="screen">
-            <h1>💌 Kabhi bhi zarurat ho...</h1>
-            <p>Without any hesitation... mujhe yaad kar lena 💬<br/> I will always be there for you ❤️</p>
+            <h1>🙏 Maafi bhi chahta hoon...</h1>
+            <p>Kabhi anjane mein chhoti moti galti ho gayi ho toh... dil se sorry Sim 😔❤️</p>
             <button onclick="prevScreen()">⬅️ Back</button>
             <button onclick="nextScreen()">Next ➡️</button>
         </div>
 
         <!-- Screen 6 -->
         <div class="screen">
-            <h1>🌸 Tumse baat kar ke...</h1>
-            <p>Har din acha lagta hai... tum ek amazing dost ho 💕</p>
+            <h1>🌸 Ap jaise ho...</h1>
+            <p>Waise hi perfect ho... kabhi badalna mat 💕</p>
             <button onclick="prevScreen()">⬅️ Back</button>
             <button onclick="nextScreen()">Next ➡️</button>
         </div>
 
-        <!-- Screen 7 - Sorry screen -->
-        <div class="screen">
-            <h1>🙏 Maafi chahta hoon...</h1>
-            <p>Kabhi anjaane mein chhoti moti galtiya ho jaati hain...<br/> Uske liye dil se sorry Sim 😔❤️</p>
-            <button onclick="prevScreen()">⬅️ Back</button>
-            <button onclick="nextScreen()">Next ➡️</button>
-        </div>
-
-        <!-- Screen 8 -->
+        <!-- Screen 7 -->
         <div class="screen">
             <h1>🎉 Final words...</h1>
-            <p>Bas yahi kehna tha... Sim, tum bahut special ho! 🌟<br/> Dosti forever 🤞💖</p>
+            <p>Sim... ap meri life ki ek bahut special dost ho!<br/> Dosti forever 🤞💖</p>
             <button onclick="prevScreen()">⬅️ Back</button>
             <button onclick="restart()">🔄 Again</button>
         </div>
@@ -150,11 +189,18 @@
     <script>
         let currentScreen = 0;
         const screens = document.querySelectorAll('.screen');
+        const container = document.getElementById('cardContainer');
+        const palettes = [
+            'palette-1', 'palette-2', 'palette-3',
+            'palette-4', 'palette-5', 'palette-6',
+            'palette-7'
+        ];
 
         function showScreen(index) {
             screens.forEach((screen, i) => {
                 screen.classList.toggle('active', i === index);
             });
+            container.className = 'card-container ' + palettes[index];
             currentScreen = index;
         }
 
@@ -173,6 +219,26 @@
         function restart() {
             showScreen(0);
         }
+
+        // Confetti generator
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+            for (let i = 0; i < 80; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti-piece';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                confetti.style.backgroundColor = randomColor();
+                confettiContainer.appendChild(confetti);
+            }
+        }
+
+        function randomColor() {
+            const colors = ['#ff6f61', '#ffc107', '#ff4081', '#7c4dff', '#4dd0e1'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        createConfetti();
     </script>
 </body>
 </html>
